@@ -4,7 +4,8 @@
 
 int main() {
     int width, height, channels;
-    unsigned char* image_data = stbi_load("image.jpg", &width, &height, &channels, STBI_rgb);
+    const char* filePath = "D:/Valerian/Coding/C/Personal Projects/Terminal Image Viewer/image.jpg";
+    unsigned char* image_data = stbi_load(filePath, &width, &height, &channels, STBI_rgb);
     system("cls");
 
     if (image_data == NULL) {
