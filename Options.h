@@ -17,7 +17,7 @@ void space(int n) //Prints HighlightLen-strlen() spaces
         printf(" ");
 }
 
-void display(char header[], char options[][20], int n, int initialOptionHighlight)
+void display(char header[], char options[][40], int n, int initialOptionHighlight)
 {
     system("cls");
     printf("%s\n", header);
@@ -35,7 +35,7 @@ void display(char header[], char options[][20], int n, int initialOptionHighligh
     printf("Enter : ");
 }
 
-void UpdateDisplay(char options[][20], int n)
+void UpdateDisplay(char options[][40], int n)
 {
     if(NewChoice == OldChoice)
         return;
@@ -55,7 +55,7 @@ void UpdateDisplay(char options[][20], int n)
 
 }
 
-int ReturnChoice(char header[], char options[][20], int n, int initialOptionHighlight)
+int ReturnChoice(char header[], char options[][40], int n, int initialOptionHighlight)
 {
     char ch;
     NewChoice = OldChoice = initialOptionHighlight-1;
@@ -86,7 +86,7 @@ int ReturnChoice(char header[], char options[][20], int n, int initialOptionHigh
 // int main()
 // {
 //     char header[40] = {"Choose one of the following options :-"};
-//     char options[][20] = {"Valerian", "Conrad", "Warren"};
+//     char options[][40] = {"Valerian", "Conrad", "Warren"};
 //     int n = 3;
 //     int choice = ReturnChoice(header, options, n, 1);
 //     printf("%d",choice);

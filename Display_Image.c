@@ -7,26 +7,26 @@
 #include "Options.h"
 
 #define MAX_FILES 100
-#define MAX_FILENAME_LENGTH 20
+#define MAX_FILENAME_LENGTH 40
 
 int main() {
     DIR *dr;
     char header[40] = {"Choose one of the following options :-"};
     struct dirent *en;
-    char cwd[PATH_MAX];
+
+    // exit(0);
 
     label: 
-    // getcwd(cwd, sizeof(cwd));
     dr = opendir(".");
     if (dr) {
         char options[MAX_FILES][MAX_FILENAME_LENGTH];
         int fileCount = 0;
-        int skipFirstFile = 1; // Set this to 0 if you want to read the first file
+        int skipFirstFile = 1;
         
         while ((en = readdir(dr)) != NULL && fileCount < MAX_FILES) {
             if (skipFirstFile) {
                 skipFirstFile = 0;
-                continue; // Skip the first file
+                continue;
             }
             strncpy(options[fileCount], en->d_name, MAX_FILENAME_LENGTH - 1);
             options[fileCount][MAX_FILENAME_LENGTH - 1] = '\0';
@@ -34,30 +34,32 @@ int main() {
         }
         
         int choice = ReturnChoice(header, options, fileCount, 1) - 1;
-        // Perform further processing with the chosen option
 
         if (strcmp(options[choice], "..") == 0) {
-        chdir("..");
-        goto label;
-        printf("Removing the last folder\n");
+            chdir("..");
+            goto label;
+            printf("Removing the last folder\n");
         }
         else if (strchr(options[choice], '.') != NULL) {
-            // Print it's a file extension
-            // Implement the logic to handle file extensions
             printf("It's a file extension\n");
         }
         else {
-            char directory[40] = "./";
-            // printf("%s", strcat(directory, options[choice]));
-            // exit(0);
+            char* directory = (char*)malloc(PATH_MAX * sizeof(char));
+            if (directory == NULL) {
+                perror("Memory allocation failed");
+                return 1;
+            }
+            strcpy(directory, "./");
             strcat(directory, options[choice]);
             chdir(directory);
+            free(directory);
             goto label;
             printf("It's a folder\n");
         }
     }
     return 0;
 }
+
 
 
 // #define STB_IMAGE_IMPLEMENTATION
