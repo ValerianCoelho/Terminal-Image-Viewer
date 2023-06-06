@@ -83,12 +83,12 @@ int ReturnChoice(char header[], char options[][20], int n, int initialOptionHigh
     return NewChoice+1;
 }
 
-int main()
-{
-    char header[40] = {"Choose one of the following options :-"};
-    char options[][20] = {"Valerian", "Conrad", "Warren"};
-    int n = 3;
-    int choice = ReturnChoice(header, options, n, 1);
-    printf("%d",choice);
-    return 0;
-}
+// int main()
+// {
+//     char header[40] = {"Choose one of the following options :-"};
+//     char options[][20] = {"Valerian", "Conrad", "Warren"};
+//     int n = 3;
+//     int choice = ReturnChoice(header, options, n, 1);
+//     printf("%d",choice);
+//     return 0;
+// }
