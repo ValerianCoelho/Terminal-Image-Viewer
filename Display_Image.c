@@ -17,8 +17,11 @@ int main() {
     char header[40] = {"Select an Image :-"}; // Header message
     struct dirent *en; // Directory entry pointer
     
-    label:
     dr = opendir("."); // Open current directory
+    chdir("./Images"); // Change current directory
+
+    label:
+        dr = opendir("."); // After changing the directory, this line reopens the current directory. It refreshes the directory stream to reflect the updated directory context.
     if (dr) {
         char options[MAX_FILES][MAX_FILENAME_LENGTH]; // Array to store file names
         int fileCount = 0; // Counter for file names
