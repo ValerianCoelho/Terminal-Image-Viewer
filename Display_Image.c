@@ -4,10 +4,10 @@
 #include <limits.h>
 #include <dirent.h>
 #include <string.h>
-#include "options.h"
+#include "./Header Files/options.h"
 #include <conio.h>
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "./Header Files/stb_image.h"
 
 #define MAX_FILES 100
 #define MAX_FILENAME_LENGTH 40
